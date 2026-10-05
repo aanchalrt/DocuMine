@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // For hackathon demo - allow all reads/writes from authenticated backend
+    // In production, restrict to authenticated service accounts only
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
